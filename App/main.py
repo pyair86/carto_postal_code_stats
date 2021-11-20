@@ -76,8 +76,9 @@ def login():
         if request.method == "POST" and form.validate():
 
             login_handler = LoginHandler(db_connection.get_cursor())
-
-            if login_handler.login():
+            logged_in = login_handler.login()
+            if logged_in:
+                session["logged_in"] = True
                 flash("You are now logged in", "success")
                 return redirect(url_for("index"))
 
@@ -98,7 +99,7 @@ def login():
 def is_logged_in(f):
     @wraps(f)
     def wrap(*args, **kwargs):
-        if "logged_in" in session:
+        if session["logged_in"]:
             return f(*args, **kwargs)
         else:
             flash("Unauthorized, Please login", "danger")
@@ -113,36 +114,6 @@ def logout():
     session.clear()
     flash("You are now logged out", "success")
     return redirect(url_for("index"))
-
-
-@app.route("/postal_codes/<string:postal_code>")
-@cache.cached()
-@is_logged_in
-def get_postal_code_stats(postal_code):
-
-    db_connection = None
-
-    try:
-        db_connection = db_connector.connect()
-        sql_file_reader = SqlFileRuntimeReader()
-        (
-            get_geojson_single_polygon_query,
-            get_aggregated_turnover_single_polygon_query,
-        ) = sql_file_reader.read_select_single_geom_queries()
-
-        stats_polygon_aggregator = StatsPolygonAggregator(
-            db_connection.get_cursor(),
-            get_geojson_single_polygon_query,
-            get_aggregated_turnover_single_polygon_query,
-            postal_code,
-        )
-        geojson = stats_polygon_aggregator.get_geojson_aggregated_stats()
-        if geojson:
-            return jsonify(geojson)
-        return render_template("404.html"), 404
-
-    finally:
-        db_connection.close_connection()
 
 
 @app.route("/postal_codes/")
@@ -172,6 +143,36 @@ def collect_features():
 
     finally:
         db_connection.close_connection()
+
+@app.route("/postal_codes/<string:postal_code>")
+@is_logged_in
+def get_postal_code_stats(postal_code):
+
+    db_connection = None
+
+    try:
+        db_connection = db_connector.connect()
+        sql_file_reader = SqlFileRuntimeReader()
+        (
+            get_geojson_single_polygon_query,
+            get_aggregated_turnover_single_polygon_query,
+        ) = sql_file_reader.read_select_single_geom_queries()
+
+        stats_polygon_aggregator = StatsPolygonAggregator(
+            db_connection.get_cursor(),
+            get_geojson_single_polygon_query,
+            get_aggregated_turnover_single_polygon_query,
+            postal_code,
+        )
+        geojson = stats_polygon_aggregator.get_geojson_aggregated_stats()
+        if geojson:
+            return jsonify(geojson)
+        return render_template("404.html"), 404
+
+    finally:
+        db_connection.close_connection()
+
+
 
 
 if __name__ == "__main__":
