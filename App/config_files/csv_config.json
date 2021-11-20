@@ -1,0 +1,6 @@
+{
+    "paths_csv_sql_command": {
+        "App/data/postal_codes.csv": "/myApp/App/data_access_layer/copy_csv_into_table/copy_csv_postal_code",
+        "App/data/paystats.csv": "/myApp/App/data_access_layer/copy_csv_into_table/copy_csv_pay_stats"
+    }
+}

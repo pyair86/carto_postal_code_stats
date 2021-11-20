@@ -1,0 +1,9 @@
+SELECT
+  sum(amount) as total_turnover, p_age, p_gender
+FROM
+  postal_code inner join pay_stats
+ON
+  pay_stats.postal_code_id=postal_code.id
+WHERE
+  code = (%s) 
+GROUP BY p_age, p_gender;

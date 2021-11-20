@@ -1,0 +1,4 @@
+INSERT INTO
+    app_user (email, password)
+VALUES
+    (%(_email)s,%(_password)s)

@@ -1,0 +1,6 @@
+ COPY
+    postal_code
+ FROM STDIN
+    WITH CSV HEADER
+ DELIMITER as ',';
+

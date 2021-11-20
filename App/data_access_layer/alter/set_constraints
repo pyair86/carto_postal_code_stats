@@ -1,0 +1,50 @@
+ALTER TABLE postal_code
+
+    ADD CONSTRAINT
+        check_digits_postal_code
+    CHECK (code ~* '^[2][8][0-9]{3}$'),
+
+    ADD CONSTRAINT
+        check_dims_geom
+    CHECK (st_ndims(the_geom) = 2),
+
+    ADD CONSTRAINT
+        check_valid_geom
+    CHECK (ST_IsValid(the_geom)),
+
+    ADD CONSTRAINT
+        check_positive_area
+    CHECK (ST_Area(the_geom) > 0),
+
+    ADD CONSTRAINT
+       check_no_overlap
+    CHECK (no_overlap(the_geom))
+    ;
+
+
+ALTER TABLE pay_stats
+
+    ADD CONSTRAINT
+        check_gender
+    CHECK
+        (p_gender IN ('F', 'M', 'O')),
+
+    ADD CONSTRAINT
+        check_p_age
+    CHECK
+        (p_age IN ('<=24', '25-34', '35-44', '45-54', '55-64', '>=65')),
+
+    ADD CONSTRAINT
+        check_positiv_amount
+    CHECK
+        (amount >= 0),
+
+    ADD CONSTRAINT
+        check_date_not_bigger_than_today
+    CHECK (p_month <= CURRENT_DATE),
+
+    ADD CONSTRAINT
+        check_date_not_older_than
+    CHECK (p_month >= '2000-01-01')
+    ;
+
