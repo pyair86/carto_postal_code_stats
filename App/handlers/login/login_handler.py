@@ -1,5 +1,5 @@
 from passlib.hash import sha256_crypt
-from flask import request
+from flask import request, session
 from App.database_py_files.sql_file_reader_runtime import SqlFileRuntimeReader
 
 
@@ -9,17 +9,16 @@ class LoginHandler:
 
     @staticmethod
     def verify_password(db_password, form_password):
-
-        verified_password = sha256_crypt.verify(form_password, db_password)
-        if verified_password:
+        if sha256_crypt.verify(form_password, db_password):
+            session["logged_in"] = True
             return True
         return False
 
     def login(self):
-        db_password, form_password = self.get_db_password()
-        if db_password and form_password:
-            verified_password = self.verify_password(form_password, db_password)
-            if verified_password:
+
+        if self.get_db_password():
+            db_password, form_password = self.get_db_password()
+            if self.verify_password(db_password, form_password):
                 return True
             return False
         return False
