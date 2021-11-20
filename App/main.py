@@ -52,6 +52,7 @@ def register():
         db_connection = db_connector.connect()
         if request.method == "POST" and form.validate():
             RegisterHandler(form, db_connection.get_cursor()).register_user()
+            flash("Thanks for registering!", "success")
             return redirect(url_for("index"))
         return render_template("register.html", form=form)
 
@@ -77,9 +78,11 @@ def login():
             login_handler = LoginHandler(db_connection.get_cursor())
 
             if login_handler.login():
+                flash("You are now logged in", "success")
                 return redirect(url_for("index"))
 
             else:
+                flash("Wrong email/password", "danger")
                 return render_template("login.html"), 401
 
         return render_template("login.html")

@@ -1,6 +1,5 @@
 from App.database_py_files.sql_file_reader_runtime import SqlFileRuntimeReader
 from passlib.hash import sha256_crypt
-from flask import flash
 
 
 class RegisterHandler:
@@ -21,4 +20,3 @@ class RegisterHandler:
         sql_insert = self.sql_reader.read_register_user()
         params_register = self.params_register(email, password)
         self.cursor.execute(sql_insert, params_register)
-        flash("Thanks for registering!", "success")
