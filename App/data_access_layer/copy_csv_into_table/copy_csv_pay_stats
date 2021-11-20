@@ -1,0 +1,6 @@
+ COPY
+    pay_stats
+ FROM STDIN
+    WITH CSV HEADER
+ DELIMITER as ',';
+

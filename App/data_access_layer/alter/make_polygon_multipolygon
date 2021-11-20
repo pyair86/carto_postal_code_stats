@@ -1,0 +1,4 @@
+ALTER TABLE
+    postal_code
+ALTER COLUMN
+    the_geom type geometry(MultiPolygon, 4326) using ST_Multi(the_geom);

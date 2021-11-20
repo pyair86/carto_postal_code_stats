@@ -1,0 +1,32 @@
+CREATE OR REPLACE FUNCTION no_overlap(geometry)
+RETURNS boolean AS
+$$
+DECLARE
+    polId int;
+    otherPolId int;
+BEGIN
+
+ SELECT
+    a.id, b.id
+ INTO
+    polId, otherPolId
+ FROM
+    postal_code a INNER JOIN postal_code b
+ ON
+    (a.the_geom && b.the_geom AND ST_Relate(a.the_geom, b.the_geom, '2********'))
+ WHERE
+    a.ctid != b.ctid LIMIT 1;
+
+  if polId is not null then
+     raise exception 'CUIDADO!! Overlapping polygons! IDs: %, %',otherPolId,polId;
+
+  END IF;
+     return true;
+
+END;
+$$
+LANGUAGE plpgsql;
+
+
+
+

@@ -1,0 +1,6 @@
+SELECT
+    sum(amount) as total_turnover, p_age, p_gender
+FROM
+    pay_stats
+GROUP BY
+    p_age, p_gender;

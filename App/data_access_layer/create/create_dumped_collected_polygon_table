@@ -1,0 +1,10 @@
+CREATE TABLE
+    collected_polygon
+AS SELECT
+    1::int AS id, ST_Collect(geom) as the_geom
+FROM
+    (
+    SELECT
+        (ST_Dump(the_geom)).geom
+    FROM
+        postal_code) sq;

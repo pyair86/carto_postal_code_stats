@@ -1,0 +1,7 @@
+ALTER TABLE pay_stats
+
+    ADD CONSTRAINT
+        fk_postal_code_id
+        foreign key (postal_code_id)
+    REFERENCES
+        postal_code (id) ON UPDATE CASCADE;
