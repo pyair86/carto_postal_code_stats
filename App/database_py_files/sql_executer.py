@@ -7,19 +7,15 @@ log = logging.getLogger(__name__)
 
 class SqlExecuter:
     """
-    Responsible for executing SQL commands.
+    prepare_data_for_multithreading - prepares lists from the input dictionary -
+    for an easy zip iteration when multithreaded.
 
-    prepare_data_for_multithreading - prepares 2 lists from the input dictionary -
-    1 list for the keys, and another list for the values,
-    for an easy zip iteration when multithreaded
-
-    execute_parallel_copy_csv - executes the copy_from_csv in parallel. A new cursor is made
-    for each iteration so the DB will be available to execute the transaction.
-    Usage there should be careful and well measured. E.g. maybe the data size won't worth it,
+    execute_parallel_copy_csv - a new cursor is made
+    for each CSV file so the DB will be available to execute the transaction on parallel.
+    Usage there should be careful though and well measured. E.g. maybe the data size won't worth it,
     and then a single thread might be enough. It can be achieved with (max_workers=1) in ThreadPoolExecutor.
 
-    copy_from_csv - executes the efficient COPY CSV command to insert data to a table. This method was chosen due
-    to its efficiency over other methods.
+    copy_from_csv - COPY CSV was chosen due to its efficiency over other insert methods.
     """
 
     def __init__(self, cursor):

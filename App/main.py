@@ -20,7 +20,6 @@ from App.database_py_files.sql_file_reader_runtime import SqlFileRuntimeReader
 from App.conf_file_reader.conf_json_reader import ConfJsonReader
 from App.database_py_files.db_connection_manager import DBConnectionManager
 
-# todo documentation
 # todo add readme and tests
 
 conf_json_reader = ConfJsonReader("/myApp/App/config_files/flask_config.json")

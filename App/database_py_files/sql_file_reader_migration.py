@@ -8,12 +8,14 @@ class SqlFileMigrationReader:
     Responsible for reading content in text files with SQL commands.
     Point was to give flexibility when changing commands without modifying the PY code.
 
-    read_migrate_commands - reads the initial SQL commands when the DB is initiated:
-    creating tables, setting constraints (also spatial) for those tables and a very important function -
-    that makes sure we don't and won't have overlapping polygons in our DB.
-    Order is important - no_overlapping_function must be implemented before values are entering to the table.
+    read_migrate_commands - reads SQL commands for when the DB is initiated:
+    Order of executions is important, no_overlapping_function must be implemented before
+    geometries are entering to the table.
+    read_set_fkey must be executed after the tables are populated
+    because of the parallel insert into tables.
 
-    read_geom_edit_commands -
+    read_geom_edit_commands - define a single type geom in the table so we can apply
+    geom constraints (e.g. polygons only) in the geom column.
     """
 
     def __init__(self):

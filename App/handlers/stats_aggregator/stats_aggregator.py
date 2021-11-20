@@ -1,4 +1,8 @@
 class StatsPolygonAggregator:
+    """
+    Responsible for aggregating the statistical and integration with the
+    geojson.
+    """
     def __init__(
         self, cursor, geo_json_query, agg_postal_code_data_query, postal_code=None
     ):

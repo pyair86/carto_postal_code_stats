@@ -6,13 +6,7 @@ log = logging.getLogger(__name__)
 
 class DBConnectionManager:
     """
-    Responsible for establishing and closing a database connection.
-
-    connect_db - returns a DB connection
-
-    get_cursor - returns a DB cursor from the connection in order to execute SQL commands
-
-    close_connection - closes the DB connection and the cursor
+    Responsible for establishing and closing a database connection & cursor.
     """
 
     def __init__(self, host, user, password, db_name, port):

@@ -1,6 +1,6 @@
 class DBConnector:
     """
-    Responsible for passing the DB credentials from the config JSON to the DBConnectionManager,
+    Responsible for passing DB configs values from config JSON to the DBConnectionManager,
     in order to establish a DB connection
     """
 

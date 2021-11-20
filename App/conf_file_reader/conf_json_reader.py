@@ -6,11 +6,8 @@ log = logging.getLogger(__name__)
 
 class ConfJsonReader:
     """
-    Responsible for reading configurations from JSON files, so changes of the code are prevented
-
-    load_json - returns a loaded JSON of configurations, so it's ready to be read
-
-    get_config - reads the loaded JSON and returns a value of the input setting such as password...
+    Responsible for reading configurations from config JSON files, so changes of configs
+    such as password, username... won't cause modifications of PY code.
     """
 
     def __init__(self, json_conf_path):
