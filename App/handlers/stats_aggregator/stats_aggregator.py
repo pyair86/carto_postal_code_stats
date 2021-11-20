@@ -2,6 +2,9 @@ class StatsPolygonAggregator:
     """
     Responsible for aggregating the statistical and integration with the
     geojson.
+
+    Inner loop in aggregate_data should not be that bad
+    because usually there aren't so many columns in a table.
     """
     def __init__(
         self, cursor, geo_json_query, agg_postal_code_data_query, postal_code=None
