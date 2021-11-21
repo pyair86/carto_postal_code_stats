@@ -96,7 +96,7 @@ From cloned directory run in terminal: **docker exec -ti carto_postal_code_stats
 10. Postal codes must start with 28 and contain 5 digits for this particular data set.
 
 
-##Improvments/real project requirements:
+##Improvments:
 
 
 1. CI-CD  - writing a file to run tests automatically when code is commited, and for a deployment pipeline.
