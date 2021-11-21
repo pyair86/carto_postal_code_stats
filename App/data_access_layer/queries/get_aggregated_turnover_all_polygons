@@ -3,4 +3,6 @@ SELECT
 FROM
     pay_stats
 GROUP BY
-    p_age, p_gender;
+    p_age, p_gender
+ORDER BY
+    p_age;

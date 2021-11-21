@@ -6,4 +6,7 @@ ON
   pay_stats.postal_code_id=postal_code.id
 WHERE
   code = (%s) 
-GROUP BY p_age, p_gender;
+GROUP BY
+    p_age, p_gender
+ORDER BY
+    p_age;
