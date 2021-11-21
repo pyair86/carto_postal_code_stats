@@ -25,7 +25,7 @@ Task was given by the company Carto.
 
 
 
-##Instructions:
+## Instructions:
 
 
 1. git clone https://github.com/pyair86/carto_postal_code_stats
@@ -97,7 +97,7 @@ From cloned directory run in terminal: **docker exec -ti carto_postal_code_stats
 
 
 
-##Improvments:
+## Improvments:
 
 
 
