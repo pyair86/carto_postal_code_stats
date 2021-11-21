@@ -97,7 +97,10 @@ def is_logged_in(f):
     @wraps(f)
     def wrap(*args, **kwargs):
 
-        if app.config['TESTING'] or 'logged_in' in session:
+        if 'logged_in' in session:
+            return f(*args, **kwargs)
+
+        if app.config['TESTING']:
             return f(*args, **kwargs)
 
         else:
@@ -141,8 +144,8 @@ def get_postal_code_stats(postal_code):
         if geojson:
             return jsonify(geojson)
         return render_template('404.html'), 404
-    finally:
 
+    finally:
         db_connection.close_connection()
 
 

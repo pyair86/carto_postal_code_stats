@@ -21,7 +21,7 @@ class StatsPolygonAggregator:
         geo_json_query,
         agg_postal_code_data_query,
         postal_code=None,
-        aggregator_column='p_age',
+        aggregator_column=None,
         ):
 
         self.cursor = cursor

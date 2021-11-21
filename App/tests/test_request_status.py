@@ -11,7 +11,9 @@ def test_postal_codes():
 
         response = flask_app.test_client().get("/postal_codes/")
         assert response.get_json() == all_polygons_response
-        assert response.status_code == 200
+
+        response = flask_app.test_client().get("/postal_codes_agg/")
+        assert response.get_json() != all_polygons_response
 
 
 def test_status_200():
@@ -30,3 +32,6 @@ def test_status_302_redirect_login():
     flask_app.config['TESTING'] = False
     response = flask_app.test_client().get("/postal_codes/28011")
     assert response.status_code == 302
+
+
+

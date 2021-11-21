@@ -119897,70 +119897,68 @@
         "type": "MultiPolygon"
       }, 
       "properties": {
-        "population_stats": {
-          "p_age": {
-            "25-34": [
-              {
-                "p_gender": "M", 
-                "total_turnover": "90043199.96415"
-              }, 
-              {
-                "p_gender": "F", 
-                "total_turnover": "109806099.81921"
-              }
-            ], 
-            "35-44": [
-              {
-                "p_gender": "F", 
-                "total_turnover": "183468390.68848"
-              }, 
-              {
-                "p_gender": "M", 
-                "total_turnover": "150459225.23120"
-              }
-            ], 
-            "45-54": [
-              {
-                "p_gender": "F", 
-                "total_turnover": "172845292.70666"
-              }, 
-              {
-                "p_gender": "M", 
-                "total_turnover": "139850828.72420"
-              }
-            ], 
-            "55-64": [
-              {
-                "p_gender": "F", 
-                "total_turnover": "124871434.61591"
-              }, 
-              {
-                "p_gender": "M", 
-                "total_turnover": "99220436.47471"
-              }
-            ], 
-            "<=24": [
-              {
-                "p_gender": "F", 
-                "total_turnover": "18811960.16982"
-              }, 
-              {
-                "p_gender": "M", 
-                "total_turnover": "15188411.69719"
-              }
-            ], 
-            ">=65": [
-              {
-                "p_gender": "M", 
-                "total_turnover": "81590935.75068"
-              }, 
-              {
-                "p_gender": "F", 
-                "total_turnover": "89956301.19883"
-              }
-            ]
+        "population_stats": [
+          {
+            "p_age": "<=24", 
+            "p_gender": "F", 
+            "total_turnover": "18811960.16982"
+          }, 
+          {
+            "p_age": "<=24", 
+            "p_gender": "M", 
+            "total_turnover": "15188411.69719"
+          }, 
+          {
+            "p_age": "25-34", 
+            "p_gender": "M", 
+            "total_turnover": "90043199.96415"
+          }, 
+          {
+            "p_age": "25-34", 
+            "p_gender": "F", 
+            "total_turnover": "109806099.81921"
+          }, 
+          {
+            "p_age": "35-44", 
+            "p_gender": "F", 
+            "total_turnover": "183468390.68848"
+          }, 
+          {
+            "p_age": "35-44", 
+            "p_gender": "M", 
+            "total_turnover": "150459225.23120"
+          }, 
+          {
+            "p_age": "45-54", 
+            "p_gender": "F", 
+            "total_turnover": "172845292.70666"
+          }, 
+          {
+            "p_age": "45-54", 
+            "p_gender": "M", 
+            "total_turnover": "139850828.72420"
+          }, 
+          {
+            "p_age": "55-64", 
+            "p_gender": "F", 
+            "total_turnover": "124871434.61591"
+          }, 
+          {
+            "p_age": "55-64", 
+            "p_gender": "M", 
+            "total_turnover": "99220436.47471"
+          }, 
+          {
+            "p_age": ">=65", 
+            "p_gender": "M", 
+            "total_turnover": "81590935.75068"
+          }, 
+          {
+            "p_age": ">=65", 
+            "p_gender": "F", 
+            "total_turnover": "89956301.19883"
           }
-        }
+        ]
       }, 
       "type": "Feature"
     }
