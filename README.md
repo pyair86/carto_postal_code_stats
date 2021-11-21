@@ -93,10 +93,12 @@ From cloned directory run in terminal: **docker exec -ti carto_postal_code_stats
 
 9. https://geojsonlint.com/ was used to make sure the geojsons present the correct coordinates.
 
-10. Postal codes must start with 28 and contain 5 digits for this particular data set.
+10. Postal codes must start with 28 and contain 5 digits for this particular data set.  
+
 
 
 ##Improvments:
+
 
 
 1. CI-CD  - writing a file to run tests automatically when code is commited, and for a deployment pipeline.
