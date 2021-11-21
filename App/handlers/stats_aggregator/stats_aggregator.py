@@ -10,6 +10,9 @@ class StatsPolygonAggregator:
 
     Inner loop in aggregate_data should not be that bad
     because usually there aren't so many columns in a table.
+
+    set_column_aggregator prepares the data for aggregate_stats_per_column in case
+    the stats data requires extra aggregation by a specific column (e.g. p_age).
     """
 
     def __init__(
